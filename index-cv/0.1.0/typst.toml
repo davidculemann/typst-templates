@@ -1,0 +1,17 @@
+[package]
+name = "index-cv"
+version = "0.1.0"
+entrypoint = "src/lib.typ"
+authors = ["JobSprout <https://jobsprout.ai>"]
+license = "MIT AND MIT-0"
+description = "Numbered-section CV in a Swiss editorial style."
+homepage = "https://www.jobsprout.ai/resume-templates/index"
+repository = "https://github.com/davidculemann/typst-templates"
+keywords = ["cv", "resume", "curriculum vitae"]
+categories = ["cv"]
+exclude = ["doc"]
+
+[template]
+path = "template"
+entrypoint = "main.typ"
+thumbnail = "thumbnail.png"

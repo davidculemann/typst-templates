@@ -1,0 +1,17 @@
+[package]
+name = "quietude-cv"
+version = "0.1.0"
+entrypoint = "src/lib.typ"
+authors = ["JobSprout <https://jobsprout.ai>"]
+license = "MIT AND MIT-0"
+description = "Spacious editorial CV with hairline section rules."
+homepage = "https://www.jobsprout.ai/resume-templates/minimal"
+repository = "https://github.com/davidculemann/typst-templates"
+keywords = ["cv", "resume", "minimalist"]
+categories = ["cv"]
+exclude = ["doc"]
+
+[template]
+path = "template"
+entrypoint = "main.typ"
+thumbnail = "thumbnail.png"

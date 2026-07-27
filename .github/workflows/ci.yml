@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  schedule:
+    # Weekly, so a Typst release that breaks a published package surfaces here
+    # rather than in somebody's compile.
+    - cron: "0 6 * * 1"
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    outputs:
+      packages: ${{ steps.list.outputs.packages }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: list
+        run: |
+          echo "packages=$(ls -d */*/ | sed 's:/$::' | jq -Rrc --slurp 'split("\n") | map(select(length > 0))')" >> "$GITHUB_OUTPUT"
+
+  check:
+    needs: discover
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package: ${{ fromJson(needs.discover.outputs.packages) }}
+    name: ${{ matrix.package }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: typst-community/setup-typst@v5
+
+      # The sample imports its own package by absolute spec, as the Universe
+      # rules require, so it has to be resolvable before it will compile.
+      - name: Install into the package cache
+        run: |
+          name="$(dirname '${{ matrix.package }}')"
+          version="$(basename '${{ matrix.package }}')"
+          target="$HOME/.local/share/typst/packages/preview/$name/$version"
+          mkdir -p "$(dirname "$target")"
+          cp -R '${{ matrix.package }}' "$target"
+
+      - name: Compile the sample
+        run: typst compile '${{ matrix.package }}/template/main.typ' /tmp/out.pdf
+
+      - name: Lint with package-check
+        run: |
+          docker run --rm -v "$GITHUB_WORKSPACE/${{ matrix.package }}":/data \
+            ghcr.io/typst/package-check:0.6.0 check

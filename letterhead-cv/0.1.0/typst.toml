@@ -1,0 +1,17 @@
+[package]
+name = "letterhead-cv"
+version = "0.1.0"
+entrypoint = "src/lib.typ"
+authors = ["JobSprout <https://jobsprout.ai>"]
+license = "MIT AND MIT-0"
+description = "Single-column CV under a tinted letterhead panel."
+homepage = "https://www.jobsprout.ai/resume-templates/letterhead"
+repository = "https://github.com/davidculemann/typst-templates"
+keywords = ["cv", "resume", "curriculum vitae"]
+categories = ["cv"]
+exclude = ["doc"]
+
+[template]
+path = "template"
+entrypoint = "main.typ"
+thumbnail = "thumbnail.png"
