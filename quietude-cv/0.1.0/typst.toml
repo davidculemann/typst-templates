@@ -9,6 +9,7 @@ homepage = "https://www.jobsprout.ai/resume-templates/minimal"
 repository = "https://github.com/davidculemann/typst-templates"
 keywords = ["cv", "resume", "minimalist"]
 categories = ["cv"]
+compiler = "0.12.0"
 exclude = ["doc"]
 
 [template]

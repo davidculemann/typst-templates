@@ -9,6 +9,7 @@ homepage = "https://www.jobsprout.ai/resume-templates/index"
 repository = "https://github.com/davidculemann/typst-templates"
 keywords = ["cv", "resume", "curriculum vitae"]
 categories = ["cv"]
+compiler = "0.12.0"
 exclude = ["doc"]
 
 [template]
