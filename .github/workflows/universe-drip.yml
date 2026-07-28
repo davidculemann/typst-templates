@@ -21,6 +21,30 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Checked every run, not only when something is due. The submit step is
+      # skipped while one of ours is in review, so without this a bad scope or an
+      # expired token would first surface on the week it was needed.
+      - name: Check the submission credentials
+        env:
+          GH_TOKEN: ${{ secrets.UNIVERSE_PAT }}
+        run: |
+          set -uo pipefail
+          if [ -z "${GH_TOKEN:-}" ]; then
+            echo "::notice::UNIVERSE_PAT is not set. Status below still works; submitting will not." \
+              "Add one with: gh secret set UNIVERSE_PAT --repo davidculemann/typst-templates"
+            exit 0
+          fi
+          who="$(gh api /user --jq .login 2>/dev/null)" || {
+            echo "::error::UNIVERSE_PAT does not authenticate."; exit 1;
+          }
+          push="$(gh api /repos/davidculemann/packages --jq '.permissions.push' 2>/dev/null)" || push=false
+          if [ "$push" != "true" ]; then
+            echo "::error::UNIVERSE_PAT authenticates as $who but cannot push to davidculemann/packages." \
+              "It needs repo scope on that fork."
+            exit 1
+          fi
+          echo "Credentials ok: $who, with push to davidculemann/packages."
+
       - name: Work out what is next
         id: pick
         env:
