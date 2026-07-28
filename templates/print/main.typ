@@ -188,8 +188,9 @@ Senior product leader with 12+ years building and scaling data-driven products a
     if calc.even(i) { left-aligned.push(cell) } else { right-aligned.push(cell) }
   }
   grid(
-    columns: (1fr, auto),
+    columns: (auto, 1fr),
     align: (left + top, right + top),
+    column-gutter: if right-aligned.len() > 0 { 0.6em } else { 0pt },
     [#left-aligned.join(linebreak())],
     [#right-aligned.join(linebreak())],
   )
@@ -206,8 +207,9 @@ Senior product leader with 12+ years building and scaling data-driven products a
     if calc.even(i) { left-aligned.push(cell) } else { right-aligned.push(cell) }
   }
   grid(
-    columns: (1fr, auto),
+    columns: (auto, 1fr),
     align: (left + top, right + top),
+    column-gutter: if right-aligned.len() > 0 { 0.6em } else { 0pt },
     [#left-aligned.join(linebreak())],
     [#right-aligned.join(linebreak())],
   )
@@ -225,8 +227,9 @@ Senior product leader with 12+ years building and scaling data-driven products a
     if calc.even(i) { left-aligned.push(cell) } else { right-aligned.push(cell) }
   }
   grid(
-    columns: (1fr, auto),
+    columns: (auto, 1fr),
     align: (left + top, right + top),
+    column-gutter: if right-aligned.len() > 0 { 0.6em } else { 0pt },
     [#left-aligned.join(linebreak())],
     [#right-aligned.join(linebreak())],
   )
@@ -246,8 +249,9 @@ Senior product leader with 12+ years building and scaling data-driven products a
     if calc.even(i) { left-aligned.push(cell) } else { right-aligned.push(cell) }
   }
   grid(
-    columns: (1fr, auto),
+    columns: (auto, 1fr),
     align: (left + top, right + top),
+    column-gutter: if right-aligned.len() > 0 { 0.6em } else { 0pt },
     [#left-aligned.join(linebreak())],
     [#right-aligned.join(linebreak())],
   )
@@ -268,8 +272,9 @@ Senior product leader with 12+ years building and scaling data-driven products a
     if calc.even(i) { left-aligned.push(cell) } else { right-aligned.push(cell) }
   }
   grid(
-    columns: (1fr, auto),
+    columns: (auto, 1fr),
     align: (left + top, right + top),
+    column-gutter: if right-aligned.len() > 0 { 0.6em } else { 0pt },
     [#left-aligned.join(linebreak())],
     [#right-aligned.join(linebreak())],
   )
@@ -290,8 +295,9 @@ Senior product leader with 12+ years building and scaling data-driven products a
     if calc.even(i) { left-aligned.push(cell) } else { right-aligned.push(cell) }
   }
   grid(
-    columns: (1fr, auto),
+    columns: (auto, 1fr),
     align: (left + top, right + top),
+    column-gutter: if right-aligned.len() > 0 { 0.6em } else { 0pt },
     [#left-aligned.join(linebreak())],
     [#right-aligned.join(linebreak())],
   )
@@ -320,8 +326,9 @@ Product Strategy, Roadmapping, Data Analysis, SQL, A/B Testing, User Research, O
     if calc.even(i) { left-aligned.push(cell) } else { right-aligned.push(cell) }
   }
   grid(
-    columns: (1fr, auto),
+    columns: (auto, 1fr),
     align: (left + top, right + top),
+    column-gutter: if right-aligned.len() > 0 { 0.6em } else { 0pt },
     [#left-aligned.join(linebreak())],
     [#right-aligned.join(linebreak())],
   )
@@ -338,8 +345,9 @@ Product Strategy, Roadmapping, Data Analysis, SQL, A/B Testing, User Research, O
     if calc.even(i) { left-aligned.push(cell) } else { right-aligned.push(cell) }
   }
   grid(
-    columns: (1fr, auto),
+    columns: (auto, 1fr),
     align: (left + top, right + top),
+    column-gutter: if right-aligned.len() > 0 { 0.6em } else { 0pt },
     [#left-aligned.join(linebreak())],
     [#right-aligned.join(linebreak())],
   )
@@ -357,8 +365,9 @@ Product Strategy, Roadmapping, Data Analysis, SQL, A/B Testing, User Research, O
     if calc.even(i) { left-aligned.push(cell) } else { right-aligned.push(cell) }
   }
   grid(
-    columns: (1fr, auto),
+    columns: (auto, 1fr),
     align: (left + top, right + top),
+    column-gutter: if right-aligned.len() > 0 { 0.6em } else { 0pt },
     [#left-aligned.join(linebreak())],
     [#right-aligned.join(linebreak())],
   )

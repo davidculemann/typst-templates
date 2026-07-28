@@ -70,10 +70,13 @@
   let photo-size = data.at("photo-size", default: 2.4cm)
   let emphasize = false
 
+  // The name column flexes now, so a long name can wrap. It must break at
+  // spaces and existing hyphens only: hyphenating a surname invents a break
+  // that is not in the person's name.
   let titleStack = stack(
     dir: ttb,
     spacing: 1em,
-    text(size: 30pt, title),
+    text(size: 30pt, hyphenate: false, title),
     text(size: 20pt, subtitle, style: subtitle-emphasis, fill: subtitle-color),
   )
 
@@ -167,13 +170,19 @@
     )
   }
 
-  stack(
-    dir: ltr,
+  // A grid, not stack(dir: ltr). A horizontal stack gives every child its
+  // natural width and cannot negotiate between them: the 30pt name took as much
+  // as it wanted and the contact block, right-aligned into whatever was left,
+  // printed straight over it. "Alexandra Fitzwilliam-Harrington" was enough to
+  // do it. Here the name column flexes and wraps while the contact block keeps
+  // its natural width, since its rows are short icon+label lines that must not
+  // wrap. Guarded by text-overlap.test.ts.
+  grid(
+    columns: (1fr, auto, auto),
+    align: (left + top, right + top, right + top),
+    column-gutter: 1em,
     titleStack,
-    align(
-      right + top,
-      socialStack,
-    ),
+    socialStack,
     imageStack,
   )
 }

@@ -314,10 +314,17 @@
 
 // Language entry (aside, upstream `language-entry`): language name at the left
 // (body size), proficiency level right-aligned as muted meta on the same line.
+//
+// The name column is `auto` and the level takes the remainder, never the other
+// way round. With (1fr, auto) the level claimed its full natural width first:
+// "Professional working proficiency" is 127pt of this 156pt aside, leaving 30pt
+// for a name that needs 38pt, and a one-word name has no break opportunity, so
+// it overflowed on top of the level. Sized this way the name always fits and a
+// long level wraps instead.
 #let cv-language(language: "", level: "") = {
   set text(font: sans-font)
   grid(
-    columns: (1fr, auto),
+    columns: (auto, 1fr),
     align: (left, right),
     [#language],
     text(fill: muted, size: meta-size, level),
@@ -432,8 +439,9 @@ Senior product leader with 12+ years building and scaling data-driven products a
     if calc.even(i) { left-aligned.push(cell) } else { right-aligned.push(cell) }
   }
   grid(
-    columns: (1fr, auto),
+    columns: (auto, 1fr),
     align: (left + top, right + top),
+    column-gutter: if right-aligned.len() > 0 { 0.6em } else { 0pt },
     [#left-aligned.join(linebreak())],
     [#right-aligned.join(linebreak())],
   )
@@ -454,8 +462,9 @@ Senior product leader with 12+ years building and scaling data-driven products a
     if calc.even(i) { left-aligned.push(cell) } else { right-aligned.push(cell) }
   }
   grid(
-    columns: (1fr, auto),
+    columns: (auto, 1fr),
     align: (left + top, right + top),
+    column-gutter: if right-aligned.len() > 0 { 0.6em } else { 0pt },
     [#left-aligned.join(linebreak())],
     [#right-aligned.join(linebreak())],
   )
@@ -477,8 +486,9 @@ Senior product leader with 12+ years building and scaling data-driven products a
     if calc.even(i) { left-aligned.push(cell) } else { right-aligned.push(cell) }
   }
   grid(
-    columns: (1fr, auto),
+    columns: (auto, 1fr),
     align: (left + top, right + top),
+    column-gutter: if right-aligned.len() > 0 { 0.6em } else { 0pt },
     [#left-aligned.join(linebreak())],
     [#right-aligned.join(linebreak())],
   )
@@ -495,8 +505,9 @@ Senior product leader with 12+ years building and scaling data-driven products a
     if calc.even(i) { left-aligned.push(cell) } else { right-aligned.push(cell) }
   }
   grid(
-    columns: (1fr, auto),
+    columns: (auto, 1fr),
     align: (left + top, right + top),
+    column-gutter: if right-aligned.len() > 0 { 0.6em } else { 0pt },
     [#left-aligned.join(linebreak())],
     [#right-aligned.join(linebreak())],
   )
@@ -514,8 +525,9 @@ Senior product leader with 12+ years building and scaling data-driven products a
     if calc.even(i) { left-aligned.push(cell) } else { right-aligned.push(cell) }
   }
   grid(
-    columns: (1fr, auto),
+    columns: (auto, 1fr),
     align: (left + top, right + top),
+    column-gutter: if right-aligned.len() > 0 { 0.6em } else { 0pt },
     [#left-aligned.join(linebreak())],
     [#right-aligned.join(linebreak())],
   )
