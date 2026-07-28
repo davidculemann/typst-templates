@@ -24,7 +24,9 @@ jobs:
       - name: Work out what is next
         id: pick
         env:
-          GH_TOKEN: ${{ secrets.UNIVERSE_PAT }}
+          # Reads a public repo, so the built-in token suffices. Only the submit
+          # step needs the PAT, which means status is checkable before one exists.
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
           version="$(jq -r .version submissions/order.json)"
@@ -40,10 +42,15 @@ jobs:
           echo "Merged upstream:$merged"
 
           # One at a time. An open PR of ours means we are waiting on review.
-          open_count="$(gh pr list --repo typst/packages --author "@me" --state open --json number --jq 'length')"
+          # Identified by the fork the branch came from, not by --author @me,
+          # which resolves to whoever holds the token and would read as zero when
+          # that is the Actions bot rather than a person.
+          ours="$(gh pr list --repo typst/packages --state open --limit 100 \
+            --json number,title,headRepositoryOwner \
+            --jq '[.[] | select(.headRepositoryOwner.login == "davidculemann")]')"
+          open_count="$(echo "$ours" | jq 'length')"
           if [ "$open_count" != "0" ]; then
-            gh pr list --repo typst/packages --author "@me" --state open --json number,title \
-              --jq '.[] | "  waiting on #\(.number) \(.title)"'
+            echo "$ours" | jq -r '.[] | "  waiting on #\(.number) \(.title)"'
             echo "next=" >> "$GITHUB_OUTPUT"
             exit 0
           fi
@@ -85,6 +92,11 @@ jobs:
           DRY_RUN: ${{ inputs.dry_run }}
         run: |
           set -euo pipefail
+          if [ -z "${GH_TOKEN:-}" ]; then
+            echo "::error::UNIVERSE_PAT is not set, so $NAME cannot be submitted." \
+              "Add a PAT with repo scope: gh secret set UNIVERSE_PAT --repo davidculemann/typst-templates"
+            exit 1
+          fi
           branch="$NAME-$VERSION"
 
           # Blobless and sparse: the registry is large and we only touch one path.
