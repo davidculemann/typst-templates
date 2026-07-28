@@ -1,0 +1,11 @@
+Executive CV
+
+This design is derived from moderner-cv:
+  https://github.com/pavelzw/moderner-cv
+Copyright (c) its authors. Licensed under MIT.
+
+Modifications by JobSprout (https://www.jobsprout.ai):
+  - restructured to render from a section registry rather than fixed fields
+  - re-typeset to a fixed size scale with a single accent colour
+  - reworked so empty and partial entries collapse rather than leaving gaps
+  - adapted for locale-aware date formatting and diff rendering

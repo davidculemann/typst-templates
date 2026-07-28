@@ -99,7 +99,7 @@ jobs:
           VERSION: ${{ steps.pick.outputs.version }}
         run: |
           set -euo pipefail
-          out="$(docker run --rm -v "$PWD/$NAME/$VERSION":/data \
+          out="$(docker run --rm -v "$PWD/packages/$NAME/$VERSION":/data \
             ghcr.io/typst/package-check:0.6.0 check 2>&1 || true)"
           echo "$out"
           if echo "$out" | grep -qE '^(error|warning)'; then
@@ -135,7 +135,7 @@ jobs:
           dest="packages/preview/$NAME/$VERSION"
           rm -rf "packages/preview/$NAME"
           mkdir -p "$(dirname "$dest")"
-          cp -R "$GITHUB_WORKSPACE/$NAME/$VERSION" "$dest"
+          cp -R "$GITHUB_WORKSPACE/packages/$NAME/$VERSION" "$dest"
 
           git -c user.name="${GITHUB_ACTOR}" -c user.email="${GITHUB_ACTOR}@users.noreply.github.com" \
             add "packages/preview/$NAME"

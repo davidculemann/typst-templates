@@ -17,7 +17,25 @@ jobs:
       - uses: actions/checkout@v4
       - id: list
         run: |
-          echo "packages=$(ls -d */*/ | sed 's:/$::' | jq -Rrc --slurp 'split("\n") | map(select(length > 0))')" >> "$GITHUB_OUTPUT"
+          echo "packages=$(ls -d packages/*/*/ | sed 's:^packages/::;s:/$::' | jq -Rrc --slurp 'split("\n") | map(select(length > 0))')" >> "$GITHUB_OUTPUT"
+
+  templates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: typst-community/setup-typst@v5
+        with:
+          typst-version: "0.12.0"
+      # The floor the templates advertise. Compiling on the newest release would
+      # not prove the claim in each file's header.
+      - name: Compile every template on the declared floor
+        run: |
+          set -euo pipefail
+          fail=0
+          for f in templates/*/main.typ; do
+            typst compile "$f" /tmp/out.pdf || { echo "::error::$f does not compile"; fail=1; }
+          done
+          exit $fail
 
   check:
     needs: discover
