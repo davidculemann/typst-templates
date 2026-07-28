@@ -10,7 +10,6 @@ design specifically, and no dependencies.
 
 | Package | Design | Hosted |
 |---|---|---|
-| [`sentinel-cv`](sentinel-cv/0.1.0) | Traditional CV with small-caps headings and fine rules. | [Try it](https://www.jobsprout.ai/resume-templates/classic) |
 | [`lattice-cv`](lattice-cv/0.1.0) | Plain single-column CV with a two-column skills grid. | [Try it](https://www.jobsprout.ai/resume-templates/grid) |
 | [`meridian-cv`](meridian-cv/0.1.0) | Serif CV with a flush-right masthead and mirrored axis. | [Try it](https://www.jobsprout.ai/resume-templates/meridian) |
 | [`emblem-cv`](emblem-cv/0.1.0) | Single-column CV anchored by a filled monogram. | [Try it](https://www.jobsprout.ai/resume-templates/emblem) |

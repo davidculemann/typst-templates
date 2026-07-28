@@ -1,0 +1,119 @@
+name: Universe drip
+
+on:
+  schedule:
+    # Tuesday mornings. One package per run, at most.
+    - cron: "0 9 * * 2"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Report what would be submitted, without pushing or opening a PR"
+        type: boolean
+        default: true
+
+concurrency:
+  group: universe-drip
+  cancel-in-progress: false
+
+jobs:
+  drip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Work out what is next
+        id: pick
+        env:
+          GH_TOKEN: ${{ secrets.UNIVERSE_PAT }}
+        run: |
+          set -euo pipefail
+          version="$(jq -r .version submissions/order.json)"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+          # Anything already in the registry is done.
+          merged=""
+          for name in $(jq -r '.packages[]' submissions/order.json); do
+            if gh api "/repos/typst/packages/contents/packages/preview/$name" --silent 2>/dev/null; then
+              merged="$merged $name"
+            fi
+          done
+          echo "Merged upstream:$merged"
+
+          # One at a time. An open PR of ours means we are waiting on review.
+          open_count="$(gh pr list --repo typst/packages --author "@me" --state open --json number --jq 'length')"
+          if [ "$open_count" != "0" ]; then
+            gh pr list --repo typst/packages --author "@me" --state open --json number,title \
+              --jq '.[] | "  waiting on #\(.number) \(.title)"'
+            echo "next=" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          for name in $(jq -r '.packages[]' submissions/order.json); do
+            case " $merged " in *" $name "*) continue ;; esac
+            echo "Next: $name"
+            echo "next=$name" >> "$GITHUB_OUTPUT"
+            exit 0
+          done
+          echo "All packages are published."
+          echo "next=" >> "$GITHUB_OUTPUT"
+
+      - name: Nothing to do
+        if: steps.pick.outputs.next == ''
+        run: echo "Either a submission is still in review or every package is published."
+
+      - name: Lint the package as the registry will see it
+        if: steps.pick.outputs.next != ''
+        env:
+          NAME: ${{ steps.pick.outputs.next }}
+          VERSION: ${{ steps.pick.outputs.version }}
+        run: |
+          set -euo pipefail
+          out="$(docker run --rm -v "$PWD/$NAME/$VERSION":/data \
+            ghcr.io/typst/package-check:0.6.0 check 2>&1 || true)"
+          echo "$out"
+          if echo "$out" | grep -qE '^(error|warning)'; then
+            echo "::error::package-check is not clean for $NAME, refusing to submit"
+            exit 1
+          fi
+
+      - name: Submit
+        if: steps.pick.outputs.next != ''
+        env:
+          GH_TOKEN: ${{ secrets.UNIVERSE_PAT }}
+          NAME: ${{ steps.pick.outputs.next }}
+          VERSION: ${{ steps.pick.outputs.version }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          set -euo pipefail
+          branch="$NAME-$VERSION"
+
+          # Blobless and sparse: the registry is large and we only touch one path.
+          git clone --quiet --filter=blob:none --sparse --depth 1 \
+            "https://x-access-token:$GH_TOKEN@github.com/davidculemann/packages.git" fork
+          cd fork
+          git sparse-checkout set packages/preview
+          git remote add upstream https://github.com/typst/packages.git
+          git fetch --quiet --depth 1 upstream main
+          git checkout --quiet -B "$branch" upstream/main
+
+          dest="packages/preview/$NAME/$VERSION"
+          rm -rf "packages/preview/$NAME"
+          mkdir -p "$(dirname "$dest")"
+          cp -R "$GITHUB_WORKSPACE/$NAME/$VERSION" "$dest"
+
+          git -c user.name="${GITHUB_ACTOR}" -c user.email="${GITHUB_ACTOR}@users.noreply.github.com" \
+            add "packages/preview/$NAME"
+          git -c user.name="${GITHUB_ACTOR}" -c user.email="${GITHUB_ACTOR}@users.noreply.github.com" \
+            commit --quiet -m "$NAME:$VERSION"
+
+          if [ "$DRY_RUN" = "true" ]; then
+            echo "::notice::Dry run. Would submit $NAME:$VERSION as $branch:"
+            git show --stat --oneline HEAD
+            exit 0
+          fi
+
+          git push --quiet --force-with-lease -u origin "$branch"
+          gh pr create --repo typst/packages --base main \
+            --head "davidculemann:$branch" \
+            --title "$NAME:$VERSION" \
+            --body-file "$GITHUB_WORKSPACE/submissions/$NAME.md"
