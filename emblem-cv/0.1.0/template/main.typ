@@ -15,7 +15,8 @@
 )
 
 // `initials` draws the filled monogram that anchors the header. Give it two
-// letters; pass `photo: "portrait.jpg"` instead to put a picture in its place.
+// letters. For a picture instead, pass image bytes: `photo: read("portrait.jpg",
+// encoding: none)`; a bare path would be resolved inside the package.
 #masthead(
   author: "Nadia Haddad",
   profession: "Brand Strategist",

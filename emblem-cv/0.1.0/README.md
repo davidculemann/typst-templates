@@ -80,12 +80,15 @@ three starts to crowd the block.
 #masthead(author: "Nadia Haddad", initials: "NH", accent-color: accent)
 ```
 
-To use a portrait instead, pass `photo` and leave `initials` off:
+To use a portrait instead, pass `photo` and leave `initials` off. `photo` takes image bytes, not a path. Typst resolves a bare path string
+relative to the file holding the `image()` call, which here is inside the
+package, so a string would be looked for in the package directory and not
+beside your document. `read` sidesteps that:
 
 ```typ
 #masthead(
   author: "Nadia Haddad",
-  photo: "portrait.jpg",
+  photo: read("portrait.jpg", encoding: none),
   photo-size: 46pt,
   photo-radius: 4pt,
 )

@@ -70,12 +70,15 @@ cleanly as a role with four bullets.
 
 ## Adding a portrait
 
-`masthead` takes an optional `photo`, set into the panel beside the name:
+`masthead` takes an optional `photo`, set into the panel beside the name. `photo` takes image bytes, not a path. Typst resolves a bare path string
+relative to the file holding the `image()` call, which here is inside the
+package, so a string would be looked for in the package directory and not
+beside your document. `read` sidesteps that:
 
 ```typ
 #masthead(
   author: "Claire Bonnet",
-  photo: "portrait.jpg",
+  photo: read("portrait.jpg", encoding: none),
   photo-size: 2.3cm,
   photo-radius: 4pt,
 )

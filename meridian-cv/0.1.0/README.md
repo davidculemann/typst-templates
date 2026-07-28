@@ -71,12 +71,15 @@ journal in `meta`, with no body at all.
 ## Adding a portrait
 
 `masthead` takes an optional `photo`, which fills the empty left side of the
-header that the right-aligned stack leaves behind:
+header that the right-aligned stack leaves behind. `photo` takes image bytes, not a path. Typst resolves a bare path string
+relative to the file holding the `image()` call, which here is inside the
+package, so a string would be looked for in the package directory and not
+beside your document. `read` sidesteps that:
 
 ```typ
 #masthead(
   author: "Ines Moreau",
-  photo: "portrait.jpg",
+  photo: read("portrait.jpg", encoding: none),
   photo-size: 2.4cm,
   photo-radius: 50%,
 )

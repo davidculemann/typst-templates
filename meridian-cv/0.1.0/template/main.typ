@@ -17,8 +17,9 @@
 )
 
 // The masthead sets flush right; the sections below run flush left. That
-// mirrored axis is the design. Pass `photo: "portrait.jpg"` to fill the empty
-// left side of the header with a circular portrait.
+// mirrored axis is the design. To fill the empty left side of the header with a
+// circular portrait, pass image bytes: `photo: read("portrait.jpg", encoding:
+// none)`. A bare path would be resolved inside the package, not next to this file.
 #masthead(
   author: "Ines Moreau",
   profession: "Research Fellow in Epidemiology",
