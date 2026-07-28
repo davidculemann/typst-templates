@@ -95,11 +95,10 @@ jobs:
       - name: Lint the package as the registry will see it
         if: steps.pick.outputs.next != ''
         env:
-          NAME: ${{ steps.pick.outputs.next }}
-          VERSION: ${{ steps.pick.outputs.version }}
+          PACKAGE: packages/${{ steps.pick.outputs.next }}/${{ steps.pick.outputs.version }}
         run: |
           set -euo pipefail
-          out="$(docker run --rm -v "$PWD/packages/$NAME/$VERSION":/data \
+          out="$(docker run --rm -v "$PWD/$PACKAGE":/data \
             ghcr.io/typst/package-check:0.6.0 check 2>&1 || true)"
           echo "$out"
           if echo "$out" | grep -qE '^(error|warning)'; then

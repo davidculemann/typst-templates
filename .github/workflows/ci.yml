@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v4
       - id: list
         run: |
-          echo "packages=$(ls -d packages/*/*/ | sed 's:^packages/::;s:/$::' | jq -Rrc --slurp 'split("\n") | map(select(length > 0))')" >> "$GITHUB_OUTPUT"
+          echo "packages=$(ls -d packages/*/*/ | sed 's:/$::' | jq -Rrc --slurp 'split("\n") | map(select(length > 0))')" >> "$GITHUB_OUTPUT"
 
   templates:
     runs-on: ubuntu-latest
@@ -54,8 +54,9 @@ jobs:
       # rules require, so it has to be resolvable before it will compile.
       - name: Install into the package cache
         run: |
-          name="$(dirname '${{ matrix.package }}')"
+          # matrix.package is the full path, packages/<name>/<version>.
           version="$(basename '${{ matrix.package }}')"
+          name="$(basename "$(dirname '${{ matrix.package }}')")"
           target="$HOME/.local/share/typst/packages/preview/$name/$version"
           mkdir -p "$(dirname "$target")"
           cp -R '${{ matrix.package }}' "$target"
