@@ -2,7 +2,7 @@ I am submitting
 - [x] a new package
 - [ ] an update for a package
 
-Description: Centred serif CV with short sections set two-up.
+Description: A centred serif CV with one structural idea: short sections are set two-up rather than stacked. Admissions, languages and memberships are three words wide, and running each at full measure under its own heading leaves the page looking like a list of stubs, so they pair off. Roles and education keep the full width. Useful for the tail of a CV that has accumulated many short qualification lists.
 
 I have read and followed the submission guidelines and, in particular, I
 - [x] selected [a name](https://github.com/typst/packages/blob/main/docs/manifest.md#naming-rules) that isn't the most obvious or canonical name for what the package does

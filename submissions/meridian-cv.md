@@ -2,7 +2,7 @@ I am submitting
 - [x] a new package
 - [ ] an update for a package
 
-Description: Serif CV with a flush-right masthead and mirrored axis.
+Description: A serif CV built on a single asymmetry: the masthead sets flush right and everything below it flush left. The eye lands on the name in the top corner, drops to the first section label, then follows one straight edge down the page, which gives the layout a focal point without spending a rule or a filled band on it. The entry function collapses any field you leave out, so the same call sets a job, a degree, a grant or a citation, which makes it practical for academic CVs that mix all four.
 
 I have read and followed the submission guidelines and, in particular, I
 - [x] selected [a name](https://github.com/typst/packages/blob/main/docs/manifest.md#naming-rules) that isn't the most obvious or canonical name for what the package does

@@ -2,7 +2,7 @@ I am submitting
 - [x] a new package
 - [ ] an update for a package
 
-Description: Formal centred serif CV for senior appointments.
+Description: A formal centred CV in a serif face: the name set large over a centred contact line and closed by a double rule, with section labels in small caps between two hairlines. It is drawn for readers who expect gravity rather than personality, such as trustee boards, chambers and professional institutes. Deliberately the sparest of the family, exporting only the show rule and the section divider, so it never dictates the shape of a career it has not met.
 
 I have read and followed the submission guidelines and, in particular, I
 - [x] selected [a name](https://github.com/typst/packages/blob/main/docs/manifest.md#naming-rules) that isn't the most obvious or canonical name for what the package does

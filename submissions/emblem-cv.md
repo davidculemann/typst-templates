@@ -2,7 +2,7 @@ I am submitting
 - [x] a new package
 - [ ] an update for a package
 
-Description: Single-column CV anchored by a filled monogram.
+Description: A single-column CV anchored by a filled monogram in the top corner, which does the job a logo does on stationery: it gives the page one dark shape to land on so the header reads as designed rather than as a name in larger type. Everything below is deliberately plain, since the monogram only works while it is the one thing asking for attention. The same slot takes a portrait for fields where that is expected.
 
 I have read and followed the submission guidelines and, in particular, I
 - [x] selected [a name](https://github.com/typst/packages/blob/main/docs/manifest.md#naming-rules) that isn't the most obvious or canonical name for what the package does

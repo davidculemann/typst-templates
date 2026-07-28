@@ -2,7 +2,7 @@ I am submitting
 - [x] a new package
 - [ ] an update for a package
 
-Description: Spacious editorial CV with hairline section rules.
+Description: A spacious editorial CV: a wide margin, a small tracked label over a hairline for each section, and nothing else. The white space is the design, and the 3cm default margin is the point rather than an oversight. It suits a CV with fewer and longer entries, where the reader is expected to read rather than scan, and it looks conspicuously calm beside anything carrying panels or colour blocks.
 
 I have read and followed the submission guidelines and, in particular, I
 - [x] selected [a name](https://github.com/typst/packages/blob/main/docs/manifest.md#naming-rules) that isn't the most obvious or canonical name for what the package does

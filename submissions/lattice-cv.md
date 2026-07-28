@@ -2,7 +2,7 @@ I am submitting
 - [x] a new package
 - [ ] an update for a package
 
-Description: Plain single-column CV with a two-column skills grid.
+Description: A plain single-column CV whose one structural idea is that skills belong in a two-column grid rather than a comma-separated run of twenty tools. Everything above that stays conventional on purpose, because this is the layout most likely to be read by software as well as by a person: one typeface, one accent on the section labels, no panels or sidebars for a parser to misread. Useful to anyone who wants an ATS-safe CV without giving up a readable skills block.
 
 I have read and followed the submission guidelines and, in particular, I
 - [x] selected [a name](https://github.com/typst/packages/blob/main/docs/manifest.md#naming-rules) that isn't the most obvious or canonical name for what the package does

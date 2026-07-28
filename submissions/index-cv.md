@@ -2,7 +2,7 @@ I am submitting
 - [x] a new package
 - [ ] an update for a package
 
-Description: Numbered-section CV in a Swiss editorial style.
+Description: A CV set like a contents page. Sections carry a zero-padded number in the left margin and entries indent to sit under the label rather than the number, so the figures form their own column down the page. The numbers count themselves in declaration order, so deleting or reordering a section renumbers the rest with nothing to keep in sync by hand. It borrows from Swiss editorial layout, where a number carries information instead of decorating.
 
 I have read and followed the submission guidelines and, in particular, I
 - [x] selected [a name](https://github.com/typst/packages/blob/main/docs/manifest.md#naming-rules) that isn't the most obvious or canonical name for what the package does

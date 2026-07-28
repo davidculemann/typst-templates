@@ -2,7 +2,7 @@ I am submitting
 - [x] a new package
 - [ ] an update for a package
 
-Description: Single-column CV under a full-bleed colour band.
+Description: A single-column CV under a colour band that runs the full width of the page, edge to edge, with the name reversed out of it. It is the most assertive header in the family: the first thing a reader sees is a solid block of colour rather than a line of type. The band is drawn on page one only, so a two-page CV does not repeat it.
 
 I have read and followed the submission guidelines and, in particular, I
 - [x] selected [a name](https://github.com/typst/packages/blob/main/docs/manifest.md#naming-rules) that isn't the most obvious or canonical name for what the package does

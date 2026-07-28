@@ -2,7 +2,7 @@ I am submitting
 - [x] a new package
 - [ ] an update for a package
 
-Description: Single-column CV under a tinted letterhead panel.
+Description: A single-column CV that opens with a tinted panel behind the name, the way company stationery does. It gives the first screen some weight without spending a strong colour to get there, and because the panel belongs to the header rather than the page, it appears once and page two starts clean. Suits anyone who wants a designed-looking header while keeping the body of the CV conventional.
 
 I have read and followed the submission guidelines and, in particular, I
 - [x] selected [a name](https://github.com/typst/packages/blob/main/docs/manifest.md#naming-rules) that isn't the most obvious or canonical name for what the package does

@@ -2,7 +2,7 @@ I am submitting
 - [x] a new package
 - [ ] an update for a package
 
-Description: Single-column CV with a full-height accent spine.
+Description: A single-column CV with a narrow band of colour down the left edge of every page. The bar is painted by the page background rather than the content, so it repeats on page two and a longer CV still reads as one document instead of two loose sheets. Useful for CVs that genuinely run to two pages, and it prints cleanly because the bar is the only ink beyond the text.
 
 I have read and followed the submission guidelines and, in particular, I
 - [x] selected [a name](https://github.com/typst/packages/blob/main/docs/manifest.md#naming-rules) that isn't the most obvious or canonical name for what the package does

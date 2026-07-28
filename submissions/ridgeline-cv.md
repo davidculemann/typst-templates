@@ -2,7 +2,7 @@ I am submitting
 - [x] a new package
 - [ ] an update for a package
 
-Description: Uncoloured two-column CV with a right-hand meta rail.
+Description: A two-column CV with the career in a wide left column and a narrow meta rail on the right, divided by a hairline that repaints on every page. The rail holds what gets scanned (contact details, registrations, skills, languages) and the main column holds what gets read. There is no colour block anywhere: the divider is a light tint of the accent and the labels carry the rest, which keeps it usable in fields where a coloured panel looks out of place.
 
 I have read and followed the submission guidelines and, in particular, I
 - [x] selected [a name](https://github.com/typst/packages/blob/main/docs/manifest.md#naming-rules) that isn't the most obvious or canonical name for what the package does
