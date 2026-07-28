@@ -59,8 +59,8 @@ Typst 0.12 or newer with nothing to install. Download one, or copy it into
 | [Vellum CV](templates/vellum) | `vellum` | MIT-0 |
 | [Vertex CV](templates/vertex) | `vertex` | MIT-0 |
 
-Nine are ports of existing Universe packages and carry their upstream terms in a
-`NOTICE`; the rest are MIT-0, so nothing has to travel with the CV you make.
+9 are ports of existing Universe packages and carry their upstream terms in a
+`NOTICE`; the other 33 are MIT-0, so nothing has to travel with the CV you make.
 
 ## On Typst Universe
 
@@ -92,10 +92,19 @@ Or open the package on Universe and choose *Create project in app*.
 
 ## Licence
 
-Package sources under `<name>/0.1.0/src/` are MIT. The sample documents
-under `<name>/0.1.0/template/` are MIT-0, because that is the part you
-edit and publish as your own CV, and no attribution should have to travel with
-it.
+Three cases, because the repository holds three kinds of thing:
+
+- `templates/<slug>/main.typ` is MIT-0 unless that directory contains a
+  `NOTICE`, in which case the design is a port and stays under the upstream
+  project's licence. The table above says which is which, and each file's header
+  repeats it.
+- `packages/<name>/0.1.0/src/` is MIT.
+- `packages/<name>/0.1.0/template/` is MIT-0, because that is the part you
+  edit and publish as your own CV, and no attribution should have to travel with
+  it.
+
+The root `LICENSE` is MIT-0, which covers everything written here. It does not
+override the ports; those are named above and carry their own terms.
 
 ## This repository is generated
 
