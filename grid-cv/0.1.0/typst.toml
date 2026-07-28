@@ -1,5 +1,5 @@
 [package]
-name = "lattice-cv"
+name = "grid-cv"
 version = "0.1.0"
 entrypoint = "src/lib.typ"
 authors = ["JobSprout <https://jobsprout.ai>"]

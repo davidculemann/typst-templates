@@ -1,8 +1,8 @@
-// Lattice CV. Replace the details below with your own and delete what you do
+// Grid CV. Replace the details below with your own and delete what you do
 // not need; every section here is optional. The accent colour is set once, on
 // the line after this comment, and everything picks it up from there.
 
-#import "@preview/lattice-cv:0.1.0": *
+#import "@preview/grid-cv:0.1.0": *
 
 #let accent = "#2c5f6e"
 
@@ -37,7 +37,7 @@ just as happy deleting a report nobody reads as building a new one.
 
 #cv-section("Experience", accent-color: accent)
 
-#lattice-entry(
+#grid-entry(
   title: "Data Analyst",
   subtitle: "Ferrier Logistics",
   dates: "2022 - Present",
@@ -52,7 +52,7 @@ just as happy deleting a report nobody reads as building a new one.
   - Ran the analytics side of the WMS migration, reconciling 11 years of history.
 ]
 
-#lattice-entry(
+#grid-entry(
   title: "Analyst",
   subtitle: "Northgate Retail Group",
   dates: "2019 - 2022",
@@ -65,7 +65,7 @@ just as happy deleting a report nobody reads as building a new one.
     which of three "revenue" figures the board should be looking at.
 ]
 
-#lattice-entry(
+#grid-entry(
   title: "Graduate Analyst",
   subtitle: "Corrigan Insurance",
   dates: "2018 - 2019",
@@ -77,7 +77,7 @@ just as happy deleting a report nobody reads as building a new one.
 
 #cv-section("Projects", accent-color: accent)
 
-#lattice-entry(
+#grid-entry(
   title: "depot-sim",
   subtitle: "Open-source discrete-event simulation for warehouse staffing",
   dates: "2023",
@@ -89,14 +89,14 @@ just as happy deleting a report nobody reads as building a new one.
 
 #cv-section("Education", accent-color: accent)
 
-#lattice-entry(
+#grid-entry(
   title: "University of Edinburgh",
   subtitle: "MSc Statistics with Data Science",
   dates: "2017 - 2018",
   location: "Edinburgh, UK",
 )[]
 
-#lattice-entry(
+#grid-entry(
   title: "University of Glasgow",
   subtitle: "BSc Mathematics",
   dates: "2014 - 2017",
@@ -105,7 +105,7 @@ just as happy deleting a report nobody reads as building a new one.
 
 #cv-section("Certifications", accent-color: accent)
 
-#lattice-entry(
+#grid-entry(
   title: "Professional Data Engineer",
   subtitle: "Google Cloud",
   dates: "2023",
@@ -128,6 +128,6 @@ just as happy deleting a report nobody reads as building a new one.
 
 #cv-section("Languages", accent-color: accent)
 
-#lattice-language(language: "English", level: "Native")
-#lattice-language(language: "Swedish", level: "Fluent")
-#lattice-language(language: "French", level: "Conversational")
+#grid-language(language: "English", level: "Native")
+#grid-language(language: "Swedish", level: "Fluent")
+#grid-language(language: "French", level: "Conversational")

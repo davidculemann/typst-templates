@@ -1,4 +1,4 @@
-lattice-cv
+grid-cv
 
 The package source in src/ is licensed MIT.
 The contents of template/, which Typst copies into your project and which you

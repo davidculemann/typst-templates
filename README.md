@@ -10,7 +10,7 @@ design specifically, and no dependencies.
 
 | Package | Design | Hosted |
 |---|---|---|
-| [`lattice-cv`](lattice-cv/0.1.0) | Plain single-column CV with a two-column skills grid. | [Try it](https://www.jobsprout.ai/resume-templates/grid) |
+| [`grid-cv`](grid-cv/0.1.0) | Plain single-column CV with a two-column skills grid. | [Try it](https://www.jobsprout.ai/resume-templates/grid) |
 | [`meridian-cv`](meridian-cv/0.1.0) | Serif CV with a flush-right masthead and mirrored axis. | [Try it](https://www.jobsprout.ai/resume-templates/meridian) |
 | [`emblem-cv`](emblem-cv/0.1.0) | Single-column CV anchored by a filled monogram. | [Try it](https://www.jobsprout.ai/resume-templates/emblem) |
 | [`letterhead-cv`](letterhead-cv/0.1.0) | Single-column CV under a tinted letterhead panel. | [Try it](https://www.jobsprout.ai/resume-templates/letterhead) |

@@ -2,7 +2,7 @@
 	"comment": "Submission order, one per run. Tier 1 first: those three set in fonts that ship with the compiler, so a reviewer compiling locally sees them as intended.",
 	"version": "0.1.0",
 	"packages": [
-		"lattice-cv",
+		"grid-cv",
 		"meridian-cv",
 		"emblem-cv",
 		"letterhead-cv",

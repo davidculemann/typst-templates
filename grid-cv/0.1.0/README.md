@@ -1,4 +1,4 @@
-# Lattice CV
+# Grid CV
 
 Skills go in a grid here, not in a comma-separated run. That is the only unusual
 thing about the layout. Everything above it stays conventional, because this
@@ -9,29 +9,29 @@ The grid exists because twenty tools set as prose are unreadable at a glance and
 useless to somebody scanning for one word.
 
 <div align="center">
-  <img alt="The Lattice CV template" src="doc/preview.png" width="480" />
+  <img alt="The Grid CV template" src="doc/preview.png" width="480" />
 </div>
 
 ## Getting started
 
 **In the Typst app**, open
-[the package page](https://typst.app/universe/package/lattice-cv) and choose
+[the package page](https://typst.app/universe/package/grid-cv) and choose
 *Create project in app*.
 
 **On the command line:**
 
 ```sh
-typst init @preview/lattice-cv:0.1.0 my-cv
+typst init @preview/grid-cv:0.1.0 my-cv
 typst compile my-cv/main.typ
 ```
 
-Lattice is set in **New Computer Modern**, which ships with Typst, so it
+Grid is set in **New Computer Modern**, which ships with Typst, so it
 compiles identically everywhere with nothing to install.
 
 ## Using it as a package
 
 ```typ
-#import "@preview/lattice-cv:0.1.0": *
+#import "@preview/grid-cv:0.1.0": *
 
 #let accent = "#2c5f6e"
 
@@ -49,7 +49,7 @@ compiles identically everywhere with nothing to install.
 
 #cv-section("Experience", accent-color: accent)
 
-#lattice-entry(
+#grid-entry(
   title: "Data Analyst",
   subtitle: "Ferrier Logistics",
   dates: "2022 - Present",
@@ -67,9 +67,9 @@ compiles identically everywhere with nothing to install.
 ```
 
 The package exports `resume`, `masthead`, `cv-section`, `skill-grid`,
-`lattice-entry` and `lattice-language`.
+`grid-entry` and `grid-language`.
 
-`lattice-entry` takes `title`, `subtitle`, `dates`, `location` and `meta`, all
+`grid-entry` takes `title`, `subtitle`, `dates`, `location` and `meta`, all
 optional, followed by the body. Blank arguments collapse rather than
 reserving space, which matters more here than elsewhere. This is the layout most
 likely to be read by software, and an empty field is one more thing to trip on.
