@@ -1,0 +1,18 @@
+[package]
+name = "europass-cv"
+version = "0.1.0"
+entrypoint = "src/lib.typ"
+authors = ["JobSprout <https://jobsprout.ai>"]
+license = "MIT AND MIT-0"
+description = "Faithful recreation of the official EU Europass CV."
+homepage = "https://www.jobsprout.ai/europass-cv"
+repository = "https://github.com/davidculemann/typst-templates"
+keywords = ["cv", "resume", "europass"]
+categories = ["cv"]
+compiler = "0.12.0"
+exclude = ["doc"]
+
+[template]
+path = "template"
+entrypoint = "main.typ"
+thumbnail = "thumbnail.png"

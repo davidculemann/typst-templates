@@ -69,6 +69,7 @@ scaffold (`typst init`) on top of the same design.
 
 | Package | Design | Hosted |
 |---|---|---|
+| [`europass-cv`](packages/europass-cv/0.1.0) | Faithful recreation of the official EU Europass CV. | [Try it](https://www.jobsprout.ai/europass-cv) |
 | [`grid-cv`](packages/grid-cv/0.1.0) | Plain single-column CV with a two-column skills grid. | [Try it](https://www.jobsprout.ai/resume-templates/grid) |
 | [`meridian-cv`](packages/meridian-cv/0.1.0) | Serif CV with a flush-right masthead and mirrored axis. | [Try it](https://www.jobsprout.ai/resume-templates/meridian) |
 | [`emblem-cv`](packages/emblem-cv/0.1.0) | Single-column CV anchored by a filled monogram. | [Try it](https://www.jobsprout.ai/resume-templates/emblem) |
